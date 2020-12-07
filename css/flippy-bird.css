@@ -71,8 +71,8 @@ html, body {
     position: relative;
   }
 
-  /* Bard */
-#bard {
+  /* Bird */
+#bird {
     display: none;
 
     width: 36px;
@@ -88,7 +88,7 @@ html, body {
     background-position: -312px -230px;
 }
 
-#bard[data-alive='true'] {
+#bird[data-alive='true'] {
     animation: bardwings 0.15s steps(3) infinite alternate;
 }
   

@@ -2,7 +2,7 @@ var gameInstance = new World(EGameState.MENU, 700);
 
 $(document).ready(function() {
     SetupBackground();
-    gameInstance.AddBard(new Bard(400, 700));
+    gameInstance.AddBard(new Bird(400, 700));
 
     $('#start').click(function() {
         gameInstance.gameState = EGameState.GAME;
@@ -10,8 +10,8 @@ $(document).ready(function() {
     });
 
     $('#viewport').click(function() {
-        gameInstance.bard.jump();
-        gameInstance.bard.draw();
+        gameInstance.bird.jump();
+        gameInstance.bird.draw();
         console.log('asdf');
     });
 });
@@ -40,7 +40,7 @@ function GameLoop(timeStamp) {
     gameInstance.Tick(dt);
     gameInstance.Draw();
 
-    if (!gameInstance.bard.alive) {
+    if (!gameInstance.bird.alive) {
         End();
     }
     

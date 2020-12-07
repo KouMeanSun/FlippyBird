@@ -9,18 +9,18 @@ class World {
     constructor(gameState, gravity) {
         this.gameState = gameState;
         this.gravity = gravity;
-        this.bard = {};
+        this.bird = {};
         this.lastFrameTime = 0;
         this.pipeManager = new PipeManager(20, 2, 3, 100);
     }
 
     Init() {
-        this.bard.init();
+        this.bird.init();
         this.pipeManager.init();
     }
 
-    AddBard(bard) {
-        this.bard = bard;
+    AddBard(bird) {
+        this.bird = bird;
     }
 
     AddPipe(pipe) {
@@ -28,33 +28,33 @@ class World {
     }
 
     Tick(dt) {
-        this.bard.update(dt);
+        this.bird.update(dt);
         this.pipeManager.update(dt);
 
-        // Check for collisions between bard and the pipes / or the floor
+        // Check for collisions between bird and the pipes / or the floor
         for (var i in this.pipeManager.pipes) {
             var pipe = this.pipeManager.pipes[i];
             if (!pipe.active) continue;
 
-            var bard = this.bard;
-            if (intersects(bard.getBB(), pipe.upperBB()) || intersects(bard.getBB(), pipe.lowerBB())) {
-                bard.die();
+            var bird = this.bird;
+            if (intersects(bird.getBB(), pipe.upperBB()) || intersects(bird.getBB(), pipe.lowerBB())) {
+                bird.die();
             }
 
             // If we are not collided check if we passed a pipe
-            if(!pipe.cleared && pipe.position.x <= bard.getBB().x - (bard.getBB().width * 0.5)) {
+            if(!pipe.cleared && pipe.position.x <= bird.getBB().x - (bird.getBB().width * 0.5)) {
                 pipe.cleared = true;
                 // TODO: Alter the score
             }
         }
 
-        if (!this.bard.alive) {
+        if (!this.bird.alive) {
             this.gameState = EGameState.MENU;
         }
     }
 
     Draw() {
-        this.bard.draw();
+        this.bird.draw();
         this.pipeManager.draw();
     }
 }

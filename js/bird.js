@@ -1,4 +1,4 @@
-class Bard {
+class Bird {
     constructor(impuls, gravity) {
         this.jumpImpuls = impuls;
         this.alive = true;
@@ -10,8 +10,8 @@ class Bard {
         this.velocity = 0;
         this.alive = true;
 
-        $('#bard').attr('data-alive', 'true');
-        $('#bard').show();
+        $('#bird').attr('data-alive', 'true');
+        $('#bird').show();
     }
 
     jump() {
@@ -35,12 +35,12 @@ class Bard {
     }
 
     draw() {
-        $('#bard').css('top', this.position);
+        $('#bird').css('top', this.position);
     }
 
     getBB() {
         return {
-            x: $('#bard').position().left,
+            x: $('#bird').position().left,
             y: this.position,
             width: 36,
             height: 26
